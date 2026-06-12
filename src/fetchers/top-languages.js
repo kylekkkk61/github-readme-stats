@@ -130,11 +130,20 @@ const fetchTopLanguages = async (
         // language must exist in at least one repo to be detected
         repoCount = 1;
       }
+      const morandiColors = {
+        "TypeScript": "#8da3b5",
+        "Python": "#a6a092",
+        "Jupyter Notebook": "#8c7b74",
+        "HTML": "#7f8c82",
+        "CSS": "#6c7a86",
+        "JavaScript": "#d4cbb8"
+      };
+
       return {
         ...acc,
         [prev.node.name]: {
           name: prev.node.name,
-          color: prev.node.color,
+          color: morandiColors[prev.node.name] || prev.node.color,
           size: langSize,
           count: repoCount,
         },
